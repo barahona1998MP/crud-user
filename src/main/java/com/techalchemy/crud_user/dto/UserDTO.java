@@ -1,5 +1,8 @@
 package com.techalchemy.crud_user.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,9 +12,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserDTO {
     private Long id;
+    @NotNull(message = "firstName cannot be null")
+    @NotBlank(message = "firstName cannot be blank")
     private String firstName;
+    @NotBlank(message = "lastName cannot be blank")
+    @NotNull(message = "lastName cannot be null")
     private String lastName;
+    @NotBlank(message = "email cannot be blank")
+    @NotNull(message = "email cannot be null")
+    @Email(message = "format email: example@mail.com")
     private String email;
+    @NotNull(message = "age cannot be null")
     private byte age;
 
     public Long getId() {

@@ -2,6 +2,7 @@ package com.techalchemy.crud_user.controller;
 
 import com.techalchemy.crud_user.dto.UserDTO;
 import com.techalchemy.crud_user.service.interfaces.UserService;
+import jakarta.validation.Valid;
 import org.apache.catalina.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,12 +31,12 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<UserDTO> createUser(@RequestBody @Valid UserDTO userDTO) {
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(userDTO));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserDTO> updateUser(@RequestBody UserDTO userDTO, @PathVariable Long id) {
+    public ResponseEntity<UserDTO> updateUser(@RequestBody @Valid UserDTO userDTO, @PathVariable Long id) {
         return ResponseEntity.ok(userService.update(userDTO, id));
     }
 

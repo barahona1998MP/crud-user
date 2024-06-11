@@ -1,6 +1,7 @@
 package com.techalchemy.crud_user.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Getter
